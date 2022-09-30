@@ -6,7 +6,6 @@ CREATE PROCEDURE populate(in_db varchar(100), in_table varchar(100), in_rows int
 BEGIN
 /*
 |
-| Developer: Kedar Vaijanapurkar
 | USAGE: call populate('DATABASE-NAME','TABLE-NAME',NUMBER-OF-ROWS,DEBUG-MODE);
 | EXAMPLE: call populate('sakila','film',100,'N');
 | Debug-mode will print an SQL that's executed and iterated.
@@ -87,7 +86,7 @@ SET @func_query=concat("INSERT INTO ", in_db,".",in_table," VALUES (",func_query
         END WHILE;
 LEAVE populate;
 END LOOP populate;
-SELECT "Kedar Vaijanapurkar" AS "Developed by";
+SELECT "Check by query select *" AS "Total Records Added";
 END
 $$
 DELIMITER ;
@@ -100,7 +99,6 @@ DELIMITER ;
 
 
 /*
-| Developer: Kedar Vaijanapurkar
 | MySQL set of function to get random values generated for individual data-types.
 */
 
@@ -112,7 +110,7 @@ BEGIN
 set @var:='';
 IF (in_strlen>500) THEN SET in_strlen=500; END IF;
 while(in_strlen>0) do
-set @var:=concat(@var,IFNULL(ELT(1+FLOOR(RAND() * 53), 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',' ','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'),'Kedar'));
+set @var:=concat(@var,IFNULL(ELT(1+FLOOR(RAND() * 53), 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',' ','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'),'lorem'));
 set in_strlen:=in_strlen-1;
 end while;
 RETURN @var;
